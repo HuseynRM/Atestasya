@@ -1,15 +1,29 @@
-class Messenger{
-    constructor(author,text){
+class Message {
+    constructor(author, text) {
+     this.author = author;
+     this.time = new Date();
+     this.text = text;
+    }
+   
+    toString() {
+        return `${this.time.getHours()}:${this.time.getMinutes()} ${this.author}: ${this.text}`
+     }
+   }
+   
+   class Messenger {
+    constructor(){
+        this.messages = []
     }
     show_history(){
-        let now = new Date();
-        return `${now.getHours()}:${now.getMinutes()}`
+        this.messages.forEach(item=>console.log(item))
     }
     send(author,text){
-        console.log(`${this.show_history()} ${this.author=author} : ${this.text=text}`)
+        let message = new Message(author, text)
+        this.messages.push(message.toString())
     }
-}
-let messenger = new Messenger()
-messenger.send('Adil', 'birinci  mesaj')
-messenger.send('Məryəm', 'İkinci mesaj')
-messenger.show_history()
+   }
+   
+   const mesaj = new Messenger();
+   mesaj.send('huseyn', 'ilk mesaj')
+   mesaj.send('kenan', 'ikinci mesaj')
+   mesaj.show_history()
